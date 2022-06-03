@@ -1,7 +1,8 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:clepy_ui/clepy_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'home_page.dart';
+import 'pages/home_page.dart';
 
 class HomeModule extends WidgetModule {
   HomeModule({Key? key}) : super(key: key);
@@ -10,5 +11,5 @@ class HomeModule extends WidgetModule {
   final List<Bind> binds = [];
 
   @override
-  Widget get view => HomePage();
+  Widget get view => const HomePage();
 }

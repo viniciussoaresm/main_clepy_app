@@ -23,11 +23,11 @@ dependencies:
   scrollable_positioned_list: ^0.3.2
   
   clepy_ui:
-    path: lib/packages/clepy_ui
-  shared:
-    path: lib/packages/shared
+    path: packages/clepy_ui
   clepy_caches:
-    path: lib/packages/clepy_caches
+    path: packages/clepy_caches
+  domain: 
+    path: packages/domain
 
 dev_dependencies:
   flutter_test:

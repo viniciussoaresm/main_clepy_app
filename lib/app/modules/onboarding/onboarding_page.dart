@@ -1,7 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
-import 'package:clepy/app/enums/route_names.dart';
-import 'package:clepy/packages/clepy_ui/lib/clepy_ui.dart';
+import 'package:clepy/app/shared/enums/route_names.dart';
 import 'package:clepy_caches/clepy_caches.dart';
+import 'package:clepy_ui/clepy_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';

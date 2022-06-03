@@ -1,4 +1,3 @@
-import 'package:clepy/app/enums/route_names.dart';
 import 'package:clepy/app/guards/auth_guard.dart';
 import 'package:clepy/app/modules/authentication/authentication_module.dart';
 import 'package:clepy/app/modules/home/home_module.dart';
@@ -6,7 +5,9 @@ import 'package:clepy/app/modules/onboarding/onboarding_page.dart';
 import 'package:clepy/app/modules/splash/splash_page.dart';
 import 'package:clepy_caches/clepy_caches.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:shared/blocs/user_configs_cubit.dart';
+
+import 'shared/blocs/user_configs_cubit.dart';
+import 'shared/enums/route_names.dart';
 
 class AppModule extends Module {
   @override
@@ -41,9 +42,6 @@ class AppModule extends Module {
     ChildRoute(
       Routes.home.path,
       child: (context, args) => HomeModule(),
-      guards: [
-        AuthGuard(),
-      ],
     ),
     ChildRoute(
       Routes.onboarding.path,

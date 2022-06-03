@@ -1,9 +1,8 @@
-import 'package:clepy/app/utils/size_config.dart';
+import 'package:clepy/app/shared/blocs/user_configs_cubit.dart';
+import 'package:clepy/app/shared/blocs/user_configs_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:shared/blocs/user_configs_cubit.dart';
-import 'package:shared/blocs/user_configs_state.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -23,7 +22,6 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return BlocProvider(
       create: (context) => userConfigsCubit,
       child: BlocListener<UserConfigsCubit, UserConfigsState>(
@@ -43,7 +41,7 @@ class _SplashPageState extends State<SplashPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/imagens/logo-horizontal.png'),
+                Image.asset('assets/images/logo-horizontal.png'),
                 const SizedBox(height: 50),
                 const CircularProgressIndicator(
                   color: Colors.blue,

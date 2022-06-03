@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: SizedBox(
                 height: 80,
-                child: Image.asset('assets/imagens/logo-horizontal.png'),
+                child: Image.asset('assets/images/logo-horizontal.png'),
               ),
             ),
             const SizedBox(

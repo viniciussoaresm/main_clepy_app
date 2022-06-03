@@ -57,7 +57,7 @@ class NewUserScreen extends StatelessWidget {
                         child: SizedBox(
                           height: 80,
                           child:
-                              Image.asset('assets/imagens/logo-horizontal.png'),
+                              Image.asset('assets/images/logo-horizontal.png'),
                         ),
                       ),
                       Container(
