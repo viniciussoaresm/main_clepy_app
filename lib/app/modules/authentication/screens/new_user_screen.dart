@@ -1,16 +1,20 @@
-import 'package:clepy/app/modules/authentication/bloc/new_user_bloc.dart';
-import 'package:clepy/app/modules/authentication/bloc/new_user_event.dart';
-import 'package:clepy/app/modules/authentication/bloc/new_user_state.dart';
+import 'package:clepy/app/modules/authentication/bloc/new_user/new_user_bloc.dart';
+import 'package:clepy/app/modules/authentication/bloc/new_user/new_user_event.dart';
+import 'package:clepy/app/modules/authentication/bloc/new_user/new_user_state.dart';
 import 'package:clepy_ui/clepy_ui.dart';
 import 'package:domain/domain.dart';
+import 'package:domain/entities/clepy_standart_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 
 class NewUserScreen extends StatelessWidget {
+  NewUserScreen({Key? key}) : super(key: key);
+
   final _formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final senha = TextEditingController();
+  final confirmarSenha = TextEditingController();
   final nome = TextEditingController();
   final codigo = TextEditingController();
 
@@ -30,23 +34,59 @@ class NewUserScreen extends StatelessWidget {
                 child: BlocBuilder<NewUserBloc, NewUserState>(
                     builder: (context, state) {
                   if (state is NewUserStateLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.85,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     );
                   } else if (state is NewUserStateError) {
-                    return Column(
-                      children: [
-                        Text(
-                            'Ops tivemos um erro ${state.typeError == 1 ? 'ao validar seu convite' : 'seu email ja foi cadastrado anteriormente'}'),
-                        PrimaryButton(
-                          onTap: () {
-                            BlocProvider.of<NewUserBloc>(context).add(
-                              NewUserEventConfirmError(),
-                            );
-                          },
-                          label: 'Confirmar',
-                        )
-                      ],
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.85,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              'assets/images/logo-horizontal.png',
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Ops tivemos um erro!',
+                              style: TextStyle(
+                                color: ClepyColors.brandPrimary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              state.mesageError,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: PrimaryButton(
+                              onTap: () {
+                                BlocProvider.of<NewUserBloc>(context).add(
+                                  NewUserEventConfirmError(),
+                                );
+                              },
+                              label: 'Confirmar',
+                            ),
+                          )
+                        ],
+                      ),
                     );
                   }
                   return Column(
@@ -101,18 +141,18 @@ class NewUserScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: TextFormField(
-                                  controller: codigo,
-                                  decoration: const InputDecoration(
-                                    labelText: 'Seu Código de Convite',
-                                    //isDense: true,
-                                    contentPadding:
-                                        EdgeInsets.fromLTRB(10, 10, 10, 0),
-                                  ),
-                                ),
-                              ),
+                              // Padding(
+                              //   padding: const EdgeInsets.all(8.0),
+                              //   child: TextFormField(
+                              //     controller: codigo,
+                              //     decoration: const InputDecoration(
+                              //       labelText: 'Seu Código de Convite',
+                              //       //isDense: true,
+                              //       contentPadding:
+                              //           EdgeInsets.fromLTRB(10, 10, 10, 0),
+                              //     ),
+                              //   ),
+                              // ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextFormField(
@@ -132,11 +172,30 @@ class NewUserScreen extends StatelessWidget {
                                 ),
                               ),
                               Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                  controller: confirmarSenha,
+                                  obscureText: true,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Senha',
+                                    //isDense: true,
+                                    contentPadding:
+                                        EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                  ),
+                                  validator: (value) {
+                                    if (value == senha.text) {
+                                      return "Senhas não conferem!";
+                                    }
+                                  },
+                                ),
+                              ),
+                              Padding(
                                 padding: const EdgeInsets.all(15),
                                 child: Text(
                                   'Selecione algumas catégorias do seu interesse:',
                                   style: TextStyle(
-                                      color: ClepyColors.brandPrimary),
+                                    color: ClepyColors.brandPrimary,
+                                  ),
                                 ),
                               ),
                               MultiSelectContainer(
@@ -205,11 +264,12 @@ class NewUserScreen extends StatelessWidget {
                                   if (!_formKey.currentState!.validate()) {
                                     return;
                                   } else {
-                                    ClepyUser user = ClepyUser(
+                                    ClepyUser user = ClepyStandartUser(
                                       uid: '',
                                       name: nome.text,
-                                      clepyTypeUser: ClepyTypeUser.standart,
                                       email: email.text,
+                                      keyWords: [],
+                                      urlProfilePicture: '',
                                     );
                                     BlocProvider.of<NewUserBloc>(context).add(
                                       NewUserEventSubmitNewUser(

@@ -10,44 +10,59 @@ import 'package:flutter_modular/flutter_modular.dart';
 class ClepyDrawer extends StatefulWidget {
   final bool logoAppBar;
   final Widget body;
-  final Widget? navigator;
+  final bool isLoged;
+  final String name;
+
   const ClepyDrawer({
     Key? key,
     required this.body,
     this.logoAppBar = false,
-    this.navigator,
+    required this.isLoged,
+    required this.name,
   }) : super(key: key);
+
   @override
-  // ignore: no_logic_in_create_state
   _ClepyDrawerState createState() => _ClepyDrawerState(
-      logoAppBar: logoAppBar, body: body, navigator: navigator);
+        logoAppBar: logoAppBar,
+        body: body,
+        isLoged: isLoged,
+        name: name,
+      );
 }
 
 class _ClepyDrawerState extends State<ClepyDrawer>
     with SingleTickerProviderStateMixin {
   final bool logoAppBar;
   final Widget body;
-  final Widget? navigator;
-  _ClepyDrawerState(
-      {Key? key, required this.body, this.logoAppBar = false, this.navigator});
+  final bool isLoged;
+  final String name;
+
+  _ClepyDrawerState({
+    Key? key,
+    required this.body,
+    this.logoAppBar = false,
+    required this.isLoged,
+    required this.name,
+  });
 
   late FancyDrawerController _controller;
-  ClepyUser? userData = null;
-  Future _retrieverData() async {
-    userData = await LoginService().retrieverUser();
-    print(userData);
-    setState(() {});
-  }
 
   @override
   void initState() {
     super.initState();
-    _retrieverData();
+    // _retrieverData();
     _controller = FancyDrawerController(
-        vsync: this, duration: Duration(milliseconds: 250))
-      ..addListener(() {
-        setState(() {}); // Must call setState
-      }); // This chunk of code is important
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 250,
+      ),
+    )..addListener(
+        () {
+          setState(
+            () {},
+          ); // Must call setState
+        },
+      ); // This chunk of code is important
   }
 
   @override
@@ -62,10 +77,10 @@ class _ClepyDrawerState extends State<ClepyDrawer>
               color: Colors.black26,
             ),
           ),
-          userData == null
+          isLoged
               ? Container()
               : Text(
-                  userData!.name,
+                  name,
                   style: TextStyle(
                     color: ClepyColors.ice,
                     fontWeight: FontWeight.bold,
@@ -73,9 +88,16 @@ class _ClepyDrawerState extends State<ClepyDrawer>
                 ),
           NavigatorTile(
             icon: Icons.person_outline,
-            text: userData == null ? 'Entrar' : 'Seu Perfil ',
+            text: isLoged ? 'Entrar' : 'Seu Perfil ',
             onTap: () => Modular.to.pushReplacementNamed('/auth'),
           ),
+          isLoged
+              ? Container()
+              : NavigatorTile(
+                  icon: Icons.close,
+                  text: 'sair',
+                  onTap: () => Modular.to.pushReplacementNamed('/auth'),
+                ),
           const Text(
             "1.0.0",
             style: TextStyle(

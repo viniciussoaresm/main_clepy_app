@@ -4,6 +4,7 @@ import 'package:clepy/app/modules/home/bloc/feed_state.dart';
 import 'package:clepy_ui/components/product_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class FeedScreen extends StatelessWidget {
   const FeedScreen({
@@ -32,7 +33,7 @@ class FeedScreen extends StatelessWidget {
                         return ProductTile(
                           product: state.products[index],
                           onTap: () {
-                            Navigator.of(context).pushNamed('details');
+                            Modular.to.pushNamed('/product');
                           },
                         );
                       },

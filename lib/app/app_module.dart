@@ -2,6 +2,7 @@ import 'package:clepy/app/guards/auth_guard.dart';
 import 'package:clepy/app/modules/authentication/authentication_module.dart';
 import 'package:clepy/app/modules/home/home_module.dart';
 import 'package:clepy/app/modules/onboarding/onboarding_page.dart';
+import 'package:clepy/app/modules/product/product_module.dart';
 import 'package:clepy/app/modules/splash/splash_page.dart';
 import 'package:clepy_caches/clepy_caches.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -50,6 +51,10 @@ class AppModule extends Module {
     ModuleRoute(
       Routes.authentication.path,
       module: AuthenticationModule(),
-    )
+    ),
+    ModuleRoute(
+      Routes.product.path,
+      module: ProductModule(),
+    ),
   ];
 }

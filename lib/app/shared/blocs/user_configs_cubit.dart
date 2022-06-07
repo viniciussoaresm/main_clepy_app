@@ -1,6 +1,7 @@
 import 'package:clepy_caches/clepy_caches.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'user_configs_state.dart';
 
@@ -15,6 +16,14 @@ class UserConfigsCubit extends Cubit<UserConfigsState> {
 
   void loadUserConfig() async {
     UserConfigs userConfigs = await getUserConfigs();
-    emit(UserConfigsState(configs: userConfigs));
+    ClepyUser? userData = await LoginService().retrieverUser();
+
+    emit(
+      UserConfigsState(
+        configs: userConfigs,
+        userData: userData,
+        user: FirebaseAuth.instance.currentUser,
+      ),
+    );
   }
 }

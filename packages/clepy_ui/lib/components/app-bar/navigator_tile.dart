@@ -1,10 +1,10 @@
 import 'package:clepy_ui/clepy_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class NavigatorTile extends StatelessWidget {
   const NavigatorTile({
     Key? key,
+    this.hide,
     required this.onTap,
     required this.icon,
     required this.text,
@@ -13,9 +13,14 @@ class NavigatorTile extends StatelessWidget {
   final Function onTap;
   final IconData icon;
   final String text;
+  final bool? hide;
 
   @override
   Widget build(BuildContext context) {
+    // if (hide!) {
+    //   return Container();
+    // }
+
     return SizedBox(
       height: 50,
       width: double.infinity,

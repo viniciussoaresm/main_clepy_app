@@ -10,8 +10,11 @@ class NewUserStateInitial extends NewUserState {}
 
 class NewUserStateError extends NewUserState {
   final ClepyUser user;
-  final int typeError;
-  NewUserStateError({required this.user, required this.typeError});
+  final String mesageError;
+  NewUserStateError({
+    required this.user,
+    required this.mesageError,
+  });
 }
 
 class NewUserStateErrorConfirm extends NewUserState {

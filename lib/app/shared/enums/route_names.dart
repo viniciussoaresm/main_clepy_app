@@ -2,6 +2,7 @@ enum Routes {
   home,
   onboarding,
   authentication,
+  product,
 }
 
 extension RoutesExt on Routes {
@@ -13,6 +14,8 @@ extension RoutesExt on Routes {
         return '/home';
       case Routes.authentication:
         return '/auth';
+      case Routes.product:
+        return '/product';
     }
   }
 }
