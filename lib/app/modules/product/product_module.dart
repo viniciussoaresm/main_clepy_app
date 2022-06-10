@@ -8,8 +8,10 @@ class ProductModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(
-      Modular.initialRoute,
-      child: (context, args) => const ProductPage(),
+      '/:uid',
+      child: (context, args) => ProductPage(
+        uid: args.params['uid'],
+      ),
     ),
   ];
 }

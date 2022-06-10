@@ -9,17 +9,6 @@ class ProductImages extends StatefulWidget {
 }
 
 class _ProductImagesState extends State<ProductImages> {
-  List<Product> demoProducts = [
-    Product(
-      id: 1,
-      images: [
-        "assets/imagens/canon1.jpg",
-        "assets/imagens/canon2.jpg",
-        "assets/imagens/canon3.jpg",
-        "assets/imagens/canon4.jpg",
-      ],
-    ),
-  ];
   int selectedImage = 0;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +20,7 @@ class _ProductImagesState extends State<ProductImages> {
             aspectRatio: 1,
             child: Hero(
               tag: 'test',
-              child: Image.asset('assets/imagens/canon2.jpg'),
+              child: Image.asset('assets/images/canon2.jpg'),
             ),
           ),
         ),

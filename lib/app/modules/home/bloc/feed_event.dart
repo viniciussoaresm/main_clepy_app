@@ -6,3 +6,9 @@ abstract class FeedEvent extends Equatable {
 }
 
 class FeedEventLoadInitial extends FeedEvent {}
+
+class FeedEventFindByCategory extends FeedEvent {
+  FeedEventFindByCategory({required this.categoryId});
+
+  final String categoryId;
+}

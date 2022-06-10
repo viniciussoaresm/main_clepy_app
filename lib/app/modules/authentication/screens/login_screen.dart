@@ -112,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                   child: PrimaryButton(
                     labelColor: Colors.red,
                     onTap: () {
-                      Modular.to.pushReplacementNamed('/home');
+                      Modular.to.pushReplacementNamed('/');
                     },
                     label: 'Continuar sem Login',
                     height: 45,

@@ -7,23 +7,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class FeedScreen extends StatelessWidget {
-  const FeedScreen({
+  FeedScreen({
     Key? key,
   }) : super(key: key);
+
+  FeedBloc feedBloc = Modular.get<FeedBloc>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: BlocProvider(
-        create: (_) => FeedBloc(FeedStateInitial()),
+        create: (_) => feedBloc,
         child: BlocBuilder<FeedBloc, FeedState>(
           builder: (context, state) {
             if (state is FeedStateInitial) {
-              BlocProvider.of<FeedBloc>(context).add(
+              feedBloc.add(
                 FeedEventLoadInitial(),
               );
             } else if (state is FeedStateLoadSuccess) {
-              print(state);
               return Column(
                 children: [
                   Expanded(
@@ -33,7 +34,8 @@ class FeedScreen extends StatelessWidget {
                         return ProductTile(
                           product: state.products[index],
                           onTap: () {
-                            Modular.to.pushNamed('/product');
+                            Modular.to.pushNamed(
+                                "/product/${state.products[index].uid}");
                           },
                         );
                       },

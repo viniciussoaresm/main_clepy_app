@@ -1,6 +1,10 @@
+import 'package:clepy/app/shared/blocs/product/product_cubit.dart';
+import 'package:clepy/app/shared/blocs/product/product_state.dart';
 import 'package:clepy_ui/clepy_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'feed_screen.dart';
 
@@ -69,8 +73,20 @@ class HomeFeedScreen extends StatelessWidget {
             ),
           ),
         ),
-        const Expanded(
-          child: FeedScreen(),
+        Expanded(
+          child: BlocBuilder<ProductCubit, ProductState>(
+            builder: (context, state) {
+              if (state.isLoading) {
+                return const CircularProgressIndicator();
+              } else if (state.isError) {
+                return ErrorWidget('Falha ao carregar produtos!');
+              } else if (state.products.isEmpty) {
+                Modular.get<ProductCubit>().retrieverFeedProducts();
+              }
+
+              return FeedScreen();
+            },
+          ),
         )
       ],
     );

@@ -19,7 +19,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           password: event.password,
         );
 
-        Modular.to.pushReplacementNamed('/home');
+        Modular.to.pushReplacementNamed('/');
       } else if (event is LoginError) {
         emit(
           LoginState.error(

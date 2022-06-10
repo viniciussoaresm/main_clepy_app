@@ -1,25 +1,41 @@
+import 'package:clepy/app/shared/blocs/product/product_cubit.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'feed_event.dart';
 import 'feed_state.dart';
 
 class FeedBloc extends Bloc<FeedEvent, FeedState> {
-  FeedBloc(FeedState initialState) : super(initialState) {
+  final ProductCubit productCubit;
+
+  FeedBloc({required this.productCubit}) : super(FeedStateInitial()) {
     on<FeedEvent>((event, emit) async {
-      // emitir estado de carregamento inicial
       emit(FeedStateLoadingInProgress());
 
-      //carregar produtos
-      List<ClepyProduct> products = await retrieverFeedProducts();
-      print('total');
-      print(products.length);
-      //emitir estado de carregamento finalizado
+      List<ClepyProduct> products = [];
+      String? categoryId;
+
+      if (event is FeedEventFindByCategory) {
+        categoryId = event.categoryId;
+      }
+
+      products = retrieverFeedProducts(
+        categoryId: categoryId,
+      );
+
       emit(FeedStateLoadSuccess(products: products));
     });
   }
-}
 
-Future<List<ClepyProduct>> retrieverFeedProducts() async {
-  return await ProductsService().getProductByCategory('ixge1D94l6iyvkeGiCf8');
+  List<ClepyProduct> retrieverFeedProducts({String? categoryId}) {
+    List<ClepyProduct> products = productCubit.state.products;
+
+    if (categoryId != null) {
+      products = products
+        ..removeWhere((element) => element.uidCategory != categoryId);
+    }
+
+    return products;
+  }
 }

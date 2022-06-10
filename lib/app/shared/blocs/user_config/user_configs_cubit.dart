@@ -1,9 +1,8 @@
+import 'package:clepy/app/shared/blocs/user_config/user_configs_state.dart';
 import 'package:clepy_caches/clepy_caches.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import 'user_configs_state.dart';
 
 class UserConfigsCubit extends Cubit<UserConfigsState> {
   UserConfigsCubit({

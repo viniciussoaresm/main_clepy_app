@@ -21,4 +21,20 @@ class ProductsService extends ProductsRepository {
 
     return products;
   }
+
+  Future<List<ClepyProduct>> getAll() async {
+    List<ClepyProduct> products = [];
+
+    await collection.get().then((documents) {
+      for (var element in documents.docs) {
+        products.add(
+          ClepyProduct.fromMap(
+            element.data() as Map<String, dynamic>,
+          ),
+        );
+      }
+    });
+
+    return products;
+  }
 }

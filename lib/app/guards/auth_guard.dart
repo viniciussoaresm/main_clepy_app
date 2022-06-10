@@ -1,10 +1,11 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthGuard extends RouteGuard {
   AuthGuard() : super(redirectTo: '/auth');
 
   @override
-  Future<bool> canActivate(String path, ModularRoute router) {
-    return Future.delayed(const Duration(seconds: 1)).then((value) => true);
+  bool canActivate(String path, ModularRoute router) {
+    return FirebaseAuth.instance.currentUser != null;
   }
 }
