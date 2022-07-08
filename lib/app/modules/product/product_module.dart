@@ -1,3 +1,4 @@
+import 'package:clepy/app/modules/product/pages/register_product_page.dart';
 import 'package:clepy/app/modules/product/pages/product_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -12,6 +13,10 @@ class ProductModule extends Module {
       child: (context, args) => ProductPage(
         uid: args.params['uid'],
       ),
+    ),
+    ChildRoute(
+      '/',
+      child: (context, args) => RegisterProductPage(),
     ),
   ];
 }

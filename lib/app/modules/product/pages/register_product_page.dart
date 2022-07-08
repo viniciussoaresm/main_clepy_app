@@ -1,19 +1,18 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
 
-class RegisterProduct extends StatefulWidget {
+class RegisterProductPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _RegisterProductState();
+    return _RegisterProductPageState();
   }
 }
 
-class _RegisterProductState extends State<RegisterProduct> {
+class _RegisterProductPageState extends State<RegisterProductPage> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
