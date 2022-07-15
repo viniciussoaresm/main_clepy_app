@@ -66,7 +66,7 @@ class ClepyDrawer extends StatelessWidget {
                     color: ClepyColors.brandPrimary,
                   ),
                 ),
-                onTap: () => Modular.to.pushReplacementNamed('/auth'),
+                onTap: () => Modular.to.pushReplacementNamed('/product'),
                 hide: !state.isLoged,
               ),
               NavigatorTile(

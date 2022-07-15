@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -19,9 +18,11 @@ class _RegisterProductState extends State<RegisterProduct> {
   bool checkboxValue = false;
   File? image;
 
-  Future pickImage() async {
+  Future _pickImage() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+      );
       if (image == null) return;
 
       final imageTemporary = File(image.path);
@@ -39,8 +40,8 @@ class _RegisterProductState extends State<RegisterProduct> {
         child: Stack(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(25, 50, 25, 10),
-              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              margin: const EdgeInsets.fromLTRB(25, 50, 25, 10),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               alignment: Alignment.center,
               child: Column(
                 children: [
@@ -50,16 +51,16 @@ class _RegisterProductState extends State<RegisterProduct> {
                       children: [
                         GestureDetector(
                           child: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100),
                               border: Border.all(width: 5, color: Colors.white),
                               color: Colors.white,
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.black12,
                                   blurRadius: 20,
-                                  offset: const Offset(5, 5),
+                                  offset: Offset(5, 5),
                                 ),
                               ],
                             ),
@@ -77,48 +78,48 @@ class _RegisterProductState extends State<RegisterProduct> {
                                   ),
                           ),
                           onTap: () {
-                            pickImage();
+                            _pickImage();
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Container(
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
                                 'Nome do produto', 'Insira o nome do produto'),
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Container(
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
                                 'Modelo do Produto',
                                 'Insira o modelo do seu produto'),
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
                         Container(
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
                                 "Valor do aluguel",
                                 "Insira o valor do aluguel"),
                             keyboardType: TextInputType.number,
                             validator: (val) {
-                              if (!(val!.isEmpty) &&
+                              if (!(val == null || val == '') &&
                                   !RegExp(r"^(\d+)*$").hasMatch(val)) {
                                 return "Insira um valor";
                               }
                               return null;
                             },
                           ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
                         FormField<bool>(
                           builder: (state) {
                             return Column(
@@ -133,7 +134,7 @@ class _RegisterProductState extends State<RegisterProduct> {
                                             state.didChange(value);
                                           });
                                         }),
-                                    Text(
+                                    const Text(
                                       "Eu aceito os termos e condições",
                                       style: TextStyle(color: Colors.grey),
                                     ),
@@ -161,7 +162,9 @@ class _RegisterProductState extends State<RegisterProduct> {
                             }
                           },
                         ),
-                        SizedBox(height: 20.0),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
                         Container(
                           decoration:
                               ThemeHelper().buttonBoxDecoration(context),
@@ -172,7 +175,7 @@ class _RegisterProductState extends State<RegisterProduct> {
                                   const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
                                 "Cadastrar".toUpperCase(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
@@ -182,7 +185,9 @@ class _RegisterProductState extends State<RegisterProduct> {
                             onPressed: () {},
                           ),
                         ),
-                        SizedBox(height: 30.0),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
                       ],
                     ),
                   ),
@@ -204,19 +209,24 @@ class ThemeHelper {
       hintText: hintText,
       fillColor: Colors.white,
       filled: true,
-      contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
       focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(100.0),
-          borderSide: BorderSide(color: Colors.grey)),
+        borderRadius: BorderRadius.circular(100.0),
+        borderSide: const BorderSide(
+          color: Color.fromARGB(255, 27, 26, 26),
+        ),
+      ),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(100.0),
           borderSide: BorderSide(color: Colors.grey.shade400)),
       errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(100.0),
-          borderSide: BorderSide(color: Colors.red, width: 2.0)),
+        borderRadius: BorderRadius.circular(100.0),
+        borderSide: const BorderSide(color: Colors.red, width: 2.0),
+      ),
       focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(100.0),
-          borderSide: BorderSide(color: Colors.red, width: 2.0)),
+        borderRadius: BorderRadius.circular(100.0),
+        borderSide: const BorderSide(color: Colors.red, width: 2.0),
+      ),
     );
   }
 
@@ -233,7 +243,7 @@ class ThemeHelper {
   BoxDecoration buttonBoxDecoration(BuildContext context,
       [String color1 = "", String color2 = ""]) {
     Color c1 = Theme.of(context).primaryColor;
-    Color c2 = Theme.of(context).accentColor;
+    Color c2 = Theme.of(context).colorScheme.secondary;
     if (color1.isEmpty == false) {
       c1 = HexColor(color1);
     }
@@ -242,13 +252,17 @@ class ThemeHelper {
     }
 
     return BoxDecoration(
-      boxShadow: [
-        BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
+      boxShadow: const [
+        BoxShadow(
+          color: Colors.black26,
+          offset: Offset(0, 4),
+          blurRadius: 5.0,
+        )
       ],
       gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        stops: [0.0, 1.0],
+        stops: const [0.0, 1.0],
         colors: [
           c1,
           c2,
@@ -266,7 +280,9 @@ class ThemeHelper {
           borderRadius: BorderRadius.circular(30.0),
         ),
       ),
-      minimumSize: MaterialStateProperty.all(Size(50, 50)),
+      minimumSize: MaterialStateProperty.all(
+        const Size(50, 50),
+      ),
       backgroundColor: MaterialStateProperty.all(Colors.transparent),
       shadowColor: MaterialStateProperty.all(Colors.transparent),
     );
@@ -278,15 +294,18 @@ class ThemeHelper {
       content: Text(content),
       actions: [
         TextButton(
-          child: Text(
-            "OK",
-            style: TextStyle(color: Colors.white),
-          ),
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black38)),
+            backgroundColor: MaterialStateProperty.all(
+              Colors.black38,
+            ),
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },
+          child: const Text(
+            "OK",
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ],
     );

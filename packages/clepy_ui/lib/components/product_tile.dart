@@ -28,7 +28,7 @@ class ProductTile extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.network(
-                    product.urlPicture,
+                    product.urlPicture ?? '',
                     height: 70,
                     width: 70,
                     fit: BoxFit.cover,
@@ -54,7 +54,7 @@ class ProductTile extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        product.description,
+                        product.description ?? '',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           color: ClepyColors.grey,
@@ -74,7 +74,7 @@ class ProductTile extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
-                              'R\$:${product.rents.toStringAsFixed(2)} 000,00',
+                              'R\$:${product.rents?.toStringAsFixed(2)} 000,00',
                               style: const TextStyle(
                                 fontSize: 12,
                               ),
@@ -119,7 +119,7 @@ class ProductTile extends StatelessWidget {
                     ),
                   ),
                   maxRating: 5,
-                  initialRating: product.rating,
+                  initialRating: product.rating ?? 0,
                   ignoreGestures: true,
                   onRatingUpdate: (rating) {},
                 ),

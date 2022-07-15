@@ -1,24 +1,24 @@
 class ClepyProduct {
-  String uid;
-  String uidCategory;
+  String? uid;
+  String? uidCategory;
   String name;
-  String urlPicture;
-  String description;
-  String address;
-  double rating;
+  String? urlPicture;
+  String? description;
+  String? address;
+  double? rating;
   double price;
-  int rents;
+  int? rents;
 
   ClepyProduct({
-    required this.uid,
+    this.uid,
     required this.name,
-    required this.urlPicture,
-    required this.description,
-    required this.address,
+    this.urlPicture,
+    this.description,
+    this.address,
     required this.price,
-    required this.rating,
-    required this.uidCategory,
-    required this.rents,
+    this.rating,
+    this.uidCategory,
+    this.rents,
   });
 
   factory ClepyProduct.fromMap(Map<String, dynamic> data) {

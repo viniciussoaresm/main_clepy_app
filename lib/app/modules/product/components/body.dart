@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
         Hero(
           tag: 'test',
           child: Image.network(
-            product!.urlPicture,
+            product!.urlPicture ?? '',
           ),
         ),
         TopRoundedContainer(

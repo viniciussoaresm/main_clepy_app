@@ -3,10 +3,11 @@ import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NewProductCubit extends Cubit<NewProductState> {
-  NewProductCubit(
-    super.initialState, {
+  NewProductCubit({
     required this.productsService,
-  });
+  }) : super(
+          const NewProductState(),
+        );
 
   final ProductsService productsService;
 
