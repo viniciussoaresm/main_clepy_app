@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:clepy_ui/clepy_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +19,8 @@ class _RegisterProductState extends State<RegisterProduct> {
   bool checkedValue = false;
   bool checkboxValue = false;
   File? image;
+  late String _selectedValue;
+  List<String> listOfValue = ['Fotografia', 'Academia', 'Eletrônicos'];
 
   Future pickImage() async {
     try {
@@ -117,6 +120,38 @@ class _RegisterProductState extends State<RegisterProduct> {
                             },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 20.0),
+                        Container(
+                          padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 10.0, bottom: 10.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black, width: 0.5),
+                              borderRadius: BorderRadius.circular(20.0),
+                              color: Colors.white
+                          ),
+                          child: DropdownButtonFormField(
+                            //value: _selectedValue,
+                            decoration: InputDecoration(
+                              isCollapsed: true,
+                              enabledBorder: InputBorder.none,
+                            ),
+                            hint: Text(
+                              'Escolha a categoria',
+                            ),
+                            isExpanded: true,
+                            onChanged: (value) {},
+                            //onSaved: (value) {},
+                            //validator: ,
+                            items: listOfValue
+                                .map((String val) {
+                              return DropdownMenuItem(
+                                value: val,
+                                child: Text(
+                                  val,
+                                ),
+                              );
+                            }).toList(),
+                          ),
                         ),
                         SizedBox(height: 20.0),
                         FormField<bool>(
@@ -232,7 +267,7 @@ class ThemeHelper {
 
   BoxDecoration buttonBoxDecoration(BuildContext context,
       [String color1 = "", String color2 = ""]) {
-    Color c1 = Theme.of(context).primaryColor;
+    Color c1 = ClepyColors.brandPrimary;
     Color c2 = Theme.of(context).accentColor;
     if (color1.isEmpty == false) {
       c1 = HexColor(color1);
