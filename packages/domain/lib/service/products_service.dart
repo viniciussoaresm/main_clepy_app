@@ -39,6 +39,6 @@ class ProductsService extends ProductsRepository {
   }
 
   Future insertProduct(ClepyProduct product) async {
-    await create(product.toMap());
+    return await create(product.toMap());
   }
 }

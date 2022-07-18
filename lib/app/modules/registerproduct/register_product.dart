@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:clepy_ui/clepy_ui.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -17,6 +19,8 @@ class _RegisterProductState extends State<RegisterProduct> {
   bool checkedValue = false;
   bool checkboxValue = false;
   File? image;
+  late String _selectedValue;
+  List<String> listOfValue = ['Fotografia', 'Academia', 'Eletrônicos'];
 
   Future _pickImage() async {
     try {
@@ -98,8 +102,9 @@ class _RegisterProductState extends State<RegisterProduct> {
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
                             decoration: ThemeHelper().textInputDecoration(
-                                'Modelo do Produto',
-                                'Insira o modelo do seu produto'),
+                              'Modelo do Produto',
+                              'Insira o modelo do seu produto',
+                            ),
                           ),
                         ),
                         const SizedBox(height: 20.0),
@@ -133,7 +138,7 @@ class _RegisterProductState extends State<RegisterProduct> {
                                             checkboxValue = value!;
                                             state.didChange(value);
                                           });
-                                        }),
+                                        },),
                                     const Text(
                                       "Eu aceito os termos e condições",
                                       style: TextStyle(color: Colors.grey),

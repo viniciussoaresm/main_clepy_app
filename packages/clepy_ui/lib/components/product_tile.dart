@@ -23,18 +23,21 @@ class ProductTile extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                    product.urlPicture ?? '',
-                    height: 70,
-                    width: 70,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              product.urlPicture != null
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 2),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.network(
+                          product.urlPicture ?? '',
+                          height: 70,
+                          width: 70,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

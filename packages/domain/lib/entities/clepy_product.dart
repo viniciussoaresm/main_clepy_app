@@ -29,7 +29,8 @@ class ClepyProduct {
       description: data['description'],
       address: data['address'],
       price: double.parse(data['price'].toString()),
-      rating: double.parse(data['rating'].toString()),
+      rating:
+          data['rating'] != null ? double.parse(data['rating'].toString()) : 0,
       rents: data['rents'],
       uidCategory: data['uidCategory'],
     );

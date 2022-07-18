@@ -17,12 +17,12 @@ class Body extends StatelessWidget {
     return ListView(
       children: [
         // ProductImages(),
-        Hero(
-          tag: 'test',
-          child: Image.network(
-            product!.urlPicture ?? '',
-          ),
-        ),
+        // Hero(
+        //   tag: 'test',
+        //   child: Image.network(
+        //     product.urlPicture ?? '',
+        //   ),
+        // ),
         TopRoundedContainer(
           color: Colors.white,
           child: Column(
@@ -30,7 +30,7 @@ class Body extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProductDescription(
-                product: product!,
+                product: product,
               ),
               TopRoundedContainer(
                 color: const Color(0xFFF6F7F9),
