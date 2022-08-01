@@ -13,6 +13,7 @@ class NewUserScreen extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
   final email = TextEditingController();
+  final cpf = TextEditingController();
   final senha = TextEditingController();
   final confirmarSenha = TextEditingController();
   final nome = TextEditingController();
@@ -141,6 +142,23 @@ class NewUserScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              /*Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                    controller: cpf,
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                      labelText: 'Seu CPF',
+                                      //isDense: true,
+                                      contentPadding:
+                                      EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                    ),
+                                    validator: (value) {
+                                      if (value == null ) {
+                                        return 'Insira um CPF válido';
+                                      }
+                                    }),
+                              ),*/
                               // Padding(
                               //   padding: const EdgeInsets.all(8.0),
                               //   child: TextFormField(

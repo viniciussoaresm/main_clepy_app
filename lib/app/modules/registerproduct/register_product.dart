@@ -125,48 +125,7 @@ class _RegisterProductState extends State<RegisterProduct> {
                           ),
                         ),
                         const SizedBox(height: 20.0),
-                        FormField<bool>(
-                          builder: (state) {
-                            return Column(
-                              children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    Checkbox(
-                                        value: checkboxValue,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            checkboxValue = value!;
-                                            state.didChange(value);
-                                          });
-                                        },),
-                                    const Text(
-                                      "Eu aceito os termos e condições",
-                                      style: TextStyle(color: Colors.grey),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    state.errorText ?? '',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      color: Theme.of(context).errorColor,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            );
-                          },
-                          validator: (value) {
-                            if (!checkboxValue) {
-                              return 'Você precisa aceitar os termos e condições';
-                            } else {
-                              return null;
-                            }
-                          },
-                        ),
+
                         const SizedBox(
                           height: 20.0,
                         ),

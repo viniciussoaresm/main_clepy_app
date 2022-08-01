@@ -21,7 +21,8 @@ class NewProductCubit extends Cubit<NewProductState> {
 
   final nameTextController = TextEditingController();
   final priceTextController = TextEditingController();
-  final modelTextController = TextEditingController();
+  final modeloTextController = TextEditingController();
+  final descriptionController = TextEditingController();
   String? selectedCategoryUid;
   String? urlPicture;
   bool? checkTerms = false;

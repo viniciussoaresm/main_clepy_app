@@ -133,7 +133,7 @@ class RegisterProductPage extends StatelessWidget {
                               decoration:
                                   ThemeHelper().inputBoxDecorationShaddow(),
                               child: TextFormField(
-                                controller: cubit.modelTextController,
+                                controller: cubit.modeloTextController,
                                 decoration: ThemeHelper().textInputDecoration(
                                     'Modelo do Produto',
                                     'Insira o modelo do seu produto'),
@@ -156,6 +156,18 @@ class RegisterProductPage extends StatelessWidget {
                                   }
                                   return null;
                                 },
+                              ),
+                            ),
+                            const SizedBox(height: 20.0),
+                            Container(
+                              decoration:
+                              ThemeHelper().inputBoxDecorationShaddow(),
+                              child: TextFormField(
+                                controller: cubit.descriptionController,
+                                decoration: ThemeHelper().textInputDecoration(
+                                  'Descrição para o produto',
+                                  'Insira uma descrição para o produto',
+                                ),
                               ),
                             ),
                             const SizedBox(height: 20.0),
@@ -185,7 +197,7 @@ class RegisterProductPage extends StatelessWidget {
                                   )
                                 : const SizedBox.shrink(),
                             const SizedBox(height: 20.0),
-                            FormField<bool>(
+                            /*FormField<bool>(
                               builder: (state) {
                                 return Column(
                                   children: <Widget>[
@@ -228,7 +240,7 @@ class RegisterProductPage extends StatelessWidget {
                                   return null;
                                 }
                               },
-                            ),
+                            ),*/
                             const SizedBox(height: 20.0),
                             Container(
                               decoration:
@@ -254,8 +266,9 @@ class RegisterProductPage extends StatelessWidget {
                                       price: double.parse(
                                         cubit.priceTextController.text,
                                       ),
-                                      description:
-                                          "Modelo: ${cubit.modelTextController.text}",
+                                      description: cubit.descriptionController.text,
+                                      modelo:
+                                          "Modelo: ${cubit.modeloTextController.text}",
                                       // urlPicture: image.path,
                                     ),
                                   );
