@@ -334,14 +334,22 @@ packages:
       name: flutter_multi_select_items
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< Updated upstream
     version: "0.4.2"
+=======
+    version: "0.4.0"
+>>>>>>> Stashed changes
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
       name: flutter_plugin_android_lifecycle
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< Updated upstream
     version: "2.0.7"
+=======
+    version: "2.0.6"
+>>>>>>> Stashed changes
   flutter_rating_bar:
     dependency: transitive
     description:
@@ -379,7 +387,11 @@ packages:
       name: glob
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< Updated upstream
     version: "2.1.0"
+=======
+    version: "2.0.2"
+>>>>>>> Stashed changes
   hexcolor:
     dependency: "direct dev"
     description:
@@ -442,7 +454,11 @@ packages:
       name: image_picker_ios
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< Updated upstream
     version: "0.8.5+6"
+=======
+    version: "0.8.5+5"
+>>>>>>> Stashed changes
   image_picker_platform_interface:
     dependency: transitive
     description:
