@@ -8,12 +8,18 @@ class ClepyStandartUser extends ClepyUser {
     required String uid,
     required String name,
     required String email,
+    required String cpf,
+    required String birthday,
+    required String telephone,
     required this.keyWords,
     required this.urlProfilePicture,
     this.rests,
   }) : super(
           uid: uid,
           name: name,
+          cpf: cpf,
+          birthday: birthday,
+          telephone: telephone,
           clepyTypeUser: ClepyTypeUser.standart,
           email: email,
         );
@@ -42,6 +48,10 @@ class ClepyStandartUser extends ClepyUser {
     return ClepyStandartUser(
       uid: data['uid'],
       name: data['name'],
+      cpf: data['cpf'],
+      birthday: data['birthday'],
+      telephone: data['telephone'],
+
       keyWords: keyWords,
       urlProfilePicture: data['urlProfilePicture'],
       email: data['email'] != null ? data['email'] : "",
@@ -52,6 +62,9 @@ class ClepyStandartUser extends ClepyUser {
     Map<String, dynamic> map = {
       'uid': uid,
       'name': name,
+      'cpf': cpf,
+      'birthday': birthday,
+      'telephone': telephone,
       'clepyTypeUser': clepyTypeUser.index,
       'keyWords': keyWords,
       'urlProfilePicture': urlProfilePicture,

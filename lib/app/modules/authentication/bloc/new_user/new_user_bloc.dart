@@ -28,6 +28,9 @@ class NewUserBloc extends Bloc<NewUserEvent, NewUserState> {
             uid: uid!,
             name: event.user.name,
             email: event.user.email,
+            cpf: event.user.cpf,
+            birthday: event.user.birthday,
+            telephone: event.user.telephone,
             keyWords: [],
             urlProfilePicture: 'urlProfilePicture',
           );

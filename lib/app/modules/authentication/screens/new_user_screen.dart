@@ -14,6 +14,8 @@ class NewUserScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final cpf = TextEditingController();
+  final birthday = TextEditingController();
+  final telephone = TextEditingController();
   final senha = TextEditingController();
   final confirmarSenha = TextEditingController();
   final nome = TextEditingController();
@@ -103,7 +105,7 @@ class NewUserScreen extends StatelessWidget {
                       ),
                       Container(
                         width: double.infinity,
-                        height: 600,
+                        height: 800,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: Colors.white54,
@@ -142,7 +144,7 @@ class NewUserScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              /*Padding(
+                              Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextFormField(
                                     controller: cpf,
@@ -158,7 +160,41 @@ class NewUserScreen extends StatelessWidget {
                                         return 'Insira um CPF válido';
                                       }
                                     }),
-                              ),*/
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                    controller: birthday,
+                                    keyboardType: TextInputType.datetime,
+                                    decoration: const InputDecoration(
+                                      labelText: 'Data de Nascimento',
+                                      //isDense: true,
+                                      contentPadding:
+                                      EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                    ),
+                                    validator: (value) {
+                                      if (value == null ) {
+                                        return 'Insira sua data de nascimento';
+                                      }
+                                    }),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                    controller: telephone,
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                      labelText: 'Telefone',
+                                      //isDense: true,
+                                      contentPadding:
+                                      EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                    ),
+                                    validator: (value) {
+                                      if (value == null ) {
+                                        return 'Insira seu telefone';
+                                      }
+                                    }),
+                              ),
                               // Padding(
                               //   padding: const EdgeInsets.all(8.0),
                               //   child: TextFormField(
@@ -286,6 +322,9 @@ class NewUserScreen extends StatelessWidget {
                                       uid: '',
                                       name: nome.text,
                                       email: email.text,
+                                      cpf: cpf.text,
+                                      birthday: birthday.text,
+                                      telephone: birthday.text,
                                       keyWords: [],
                                       urlProfilePicture: '',
                                     );
