@@ -6,5 +6,3 @@ mixin ClepyColors {
   static Color ice = const Color(0xfff0f2f0);
   static Color grey = const Color(0xffC4C4C4);
 }
-
-

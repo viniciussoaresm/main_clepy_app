@@ -6,26 +6,26 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'feed_event.dart';
 import 'feed_state.dart';
 
-class FeedCubit extends Cubit<FeedState> {
+class FeedBloc extends Bloc<FeedEvent, FeedState> {
   final ProductCubit productCubit;
 
-  FeedCubit({required this.productCubit}) : super(FeedStateInitial()) {
-    // on<FeedEvent>((event, emit) async {
-    //   emit(FeedStateLoadingInProgress());
-    //
-    //   List<ClepyProduct> products = [];
-    //   String? categoryId;
-    //
-    //   if (event is FeedEventFindByCategory) {
-    //     categoryId = event.categoryId;
-    //   }
-    //
-    //   products = retrieverFeedProducts(
-    //     categoryId: categoryId,
-    //   );
-    //
-    //   emit(FeedStateLoadSuccess(products: products));
-    // });
+  FeedBloc({required this.productCubit}) : super(FeedStateInitial()) {
+    on<FeedEvent>((event, emit) async {
+      emit(FeedStateLoadingInProgress());
+
+      List<ClepyProduct> products = [];
+      String? categoryId;
+
+      if (event is FeedEventFindByCategory) {
+        categoryId = event.categoryId;
+      }
+
+      products = retrieverFeedProducts(
+        categoryId: categoryId,
+      );
+
+      emit(FeedStateLoadSuccess(products: products));
+    });
   }
 
   List<ClepyProduct> retrieverFeedProducts({String? categoryId}) {
