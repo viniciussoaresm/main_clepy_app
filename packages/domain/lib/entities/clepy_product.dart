@@ -2,7 +2,7 @@ class ClepyProduct {
   String? uid;
   String? uidCategory;
   String name;
-  String? urlPicture;
+  String? urlPicture;//colocar uma lista[] de string
   String? description;
   String? address;
   double? rating;

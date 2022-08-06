@@ -17,14 +17,14 @@ class Body extends StatelessWidget {
     return ListView(
       children: [
         // ProductImages(),
-        // Hero(
-        //   tag: 'test',
-        //   child: Image.network(
-        //     product.urlPicture ?? '',
-        //   ),
-        // ),
+        Hero(
+          tag: 'test',
+          child: Image.network(
+            product.urlPicture ?? '',
+          ),
+        ),
         TopRoundedContainer(
-          color: Colors.white,
+          color: Colors.red,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
