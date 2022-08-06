@@ -8,11 +8,17 @@ class ClepyStoreUser extends ClepyUser {
     required String uid,
     required String name,
     required String email,
+    required String cpf,
+    required String birthday,
+    required String telephone,
     required this.urlProfilePicture,
     this.myProducts,
   }) : super(
           uid: uid,
           name: name,
+          cpf: cpf,
+          birthday: birthday,
+          telephone: telephone,
           clepyTypeUser: ClepyTypeUser.store,
           email: email,
         );
@@ -32,6 +38,9 @@ class ClepyStoreUser extends ClepyUser {
     return ClepyStoreUser(
       uid: data['uid'],
       name: data['name'],
+      cpf: data['cpf'],
+      birthday: data['birthday'],
+      telephone: data['telephone'],
       urlProfilePicture: data['urlProfilePicture'],
       email: data['email'],
       myProducts: myProducts,
@@ -42,6 +51,9 @@ class ClepyStoreUser extends ClepyUser {
     Map<String, dynamic> map = {
       'uid': uid,
       'name': name,
+      'cpf': cpf,
+      'birthday': birthday,
+      'telephone': telephone,
       'clepyTypeUser': clepyTypeUser.index,
       'urlProfilePicture': urlProfilePicture,
     };

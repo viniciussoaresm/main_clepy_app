@@ -4,6 +4,7 @@ class ClepyProduct {
   String name;
   String? urlPicture;//colocar uma lista[] de string
   String? description;
+  String? modelo;
   String? address;
   double? rating;
   double price;
@@ -14,6 +15,7 @@ class ClepyProduct {
     required this.name,
     this.urlPicture,
     this.description,
+    this.modelo,
     this.address,
     required this.price,
     this.rating,
@@ -27,6 +29,7 @@ class ClepyProduct {
       name: data['name'],
       urlPicture: data['urlPicture'],
       description: data['description'],
+      modelo: data['modelo'],
       address: data['address'],
       price: double.parse(data['price'].toString()),
       rating:
@@ -42,6 +45,7 @@ class ClepyProduct {
       'name': name,
       'urlPicture': urlPicture,
       'description': description,
+      'modelo': modelo,
       'address': address,
       'price': price,
       'rating': rating,

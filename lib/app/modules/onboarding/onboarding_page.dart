@@ -9,9 +9,9 @@ import 'package:domain/domain.dart';
 
 class OnboardingPage extends StatelessWidget {
   final List<String> imagens = [
-    'assets/imagens/bem_vindo.png',
-    'assets/imagens/alugar.png',
-    'assets/imagens/ganhe_clepy.png',
+    'assets/images/bem_vindo.png',
+    'assets/images/alugar.png',
+    'assets/images/ganhe_clepy.png',
   ];
   final List<String> titulo = [
     'Bem Vindo',
