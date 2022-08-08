@@ -1,7 +1,10 @@
 import 'dart:core';
 
+import 'package:clepy/app/modules/authentication/bloc/new_user/new_user_event.dart';
 import 'package:clepy_ui/clepy_ui.dart';
 import 'package:domain/domain.dart';
+import 'package:domain/repository/schemas/user_repository.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -16,7 +19,7 @@ class RegisterProductPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   late List<ClepyCategory> categories = [];
   final NewProductCubit cubit = Modular.get<NewProductCubit>();
-
+  final uidUser = LoginService().retrieverUser().toString();
   // Future pickImage() async {
   //   try {
   //     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -270,6 +273,7 @@ class RegisterProductPage extends StatelessWidget {
                                       modelo:
                                           "Modelo: ${cubit.modeloTextController.text}",
                                       // urlPicture: image.path,
+                                      uidUser: uidUser,
                                     ),
                                   );
                                 },

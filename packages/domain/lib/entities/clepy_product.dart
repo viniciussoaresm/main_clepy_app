@@ -1,14 +1,16 @@
 class ClepyProduct {
   String? uid;
   String? uidCategory;
+  String? uidUser;
   String name;
-  String? urlPicture;//colocar uma lista[] de string
+  String? urlPicture;
   String? description;
   String? modelo;
   String? address;
   double? rating;
   double price;
   int? rents;
+
 
   ClepyProduct({
     this.uid,
@@ -20,6 +22,7 @@ class ClepyProduct {
     required this.price,
     this.rating,
     this.uidCategory,
+    this.uidUser,
     this.rents,
   });
 
@@ -36,6 +39,7 @@ class ClepyProduct {
           data['rating'] != null ? double.parse(data['rating'].toString()) : 0,
       rents: data['rents'],
       uidCategory: data['uidCategory'],
+      uidUser: data['uidUser']
     );
   }
 
@@ -51,6 +55,7 @@ class ClepyProduct {
       'rating': rating,
       'rents': rents,
       'uidCategory': uidCategory,
+      'uidUser': uidUser
     };
   }
 }
