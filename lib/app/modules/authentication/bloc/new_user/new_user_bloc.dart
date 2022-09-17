@@ -51,7 +51,7 @@ class NewUserBloc extends Bloc<NewUserEvent, NewUserState> {
           );
           return;
         }
-        Modular.to.pushReplacementNamed('/home');
+        Modular.to.pushReplacementNamed('/');
       } else if (event is NewUserEventConfirmError) {
         emit(NewUserStateErrorConfirm());
       }

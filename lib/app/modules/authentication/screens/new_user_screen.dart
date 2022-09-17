@@ -153,10 +153,10 @@ class NewUserScreen extends StatelessWidget {
                                       labelText: 'Seu CPF',
                                       //isDense: true,
                                       contentPadding:
-                                      EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                          EdgeInsets.fromLTRB(10, 10, 10, 0),
                                     ),
                                     validator: (value) {
-                                      if (value == null ) {
+                                      if (value == null) {
                                         return 'Insira um CPF válido';
                                       }
                                     }),
@@ -170,10 +170,10 @@ class NewUserScreen extends StatelessWidget {
                                       labelText: 'Data de Nascimento',
                                       //isDense: true,
                                       contentPadding:
-                                      EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                          EdgeInsets.fromLTRB(10, 10, 10, 0),
                                     ),
                                     validator: (value) {
-                                      if (value == null ) {
+                                      if (value == null) {
                                         return 'Insira sua data de nascimento';
                                       }
                                     }),
@@ -187,10 +187,10 @@ class NewUserScreen extends StatelessWidget {
                                       labelText: 'Telefone',
                                       //isDense: true,
                                       contentPadding:
-                                      EdgeInsets.fromLTRB(10, 10, 10, 0),
+                                          EdgeInsets.fromLTRB(10, 10, 10, 0),
                                     ),
                                     validator: (value) {
-                                      if (value == null ) {
+                                      if (value == null) {
                                         return 'Insira seu telefone';
                                       }
                                     }),
@@ -237,7 +237,7 @@ class NewUserScreen extends StatelessWidget {
                                         EdgeInsets.fromLTRB(10, 10, 10, 0),
                                   ),
                                   validator: (value) {
-                                    if (value == senha.text) {
+                                    if (value != senha.text) {
                                       return "Senhas não conferem!";
                                     }
                                   },

@@ -48,13 +48,12 @@ class ClepyStandartUser extends ClepyUser {
     return ClepyStandartUser(
       uid: data['uid'],
       name: data['name'],
-      cpf: data['cpf'],
-      birthday: data['birthday'],
-      telephone: data['telephone'],
-
+      cpf: data['cpf'] ?? '',
+      birthday: data['birthday'] ?? '',
+      telephone: data['telephone'] ?? '',
       keyWords: keyWords,
       urlProfilePicture: data['urlProfilePicture'],
-      email: data['email'] != null ? data['email'] : "",
+      email: data['email'] ?? "",
       rests: rents,
     );
   }

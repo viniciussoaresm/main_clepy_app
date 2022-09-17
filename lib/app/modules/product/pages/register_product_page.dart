@@ -12,6 +12,7 @@ import 'package:hexcolor/hexcolor.dart' show HexColor;
 
 import '../bloc/new_product/new_product_cubit.dart';
 import '../bloc/new_product/new_product_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterProductPage extends StatelessWidget {
   RegisterProductPage({Key? key}) : super(key: key);
@@ -19,7 +20,8 @@ class RegisterProductPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   late List<ClepyCategory> categories = [];
   final NewProductCubit cubit = Modular.get<NewProductCubit>();
-  final uidUser = LoginService().retrieverUser().toString();
+  final uidUser = FirebaseAuth.instance.currentUser!.uid;
+
   // Future pickImage() async {
   //   try {
   //     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -55,7 +57,7 @@ class RegisterProductPage extends StatelessWidget {
       body: BlocConsumer<NewProductCubit, NewProductState>(
         listener: (context, state) {
           if (state.isSuccess) {
-            Modular.to.pushReplacementNamed('/home');
+            Modular.to.pushReplacementNamed('/');
           }
         },
         builder: (context, state) {
@@ -164,7 +166,7 @@ class RegisterProductPage extends StatelessWidget {
                             const SizedBox(height: 20.0),
                             Container(
                               decoration:
-                              ThemeHelper().inputBoxDecorationShaddow(),
+                                  ThemeHelper().inputBoxDecorationShaddow(),
                               child: TextFormField(
                                 controller: cubit.descriptionController,
                                 decoration: ThemeHelper().textInputDecoration(
@@ -269,7 +271,8 @@ class RegisterProductPage extends StatelessWidget {
                                       price: double.parse(
                                         cubit.priceTextController.text,
                                       ),
-                                      description: cubit.descriptionController.text,
+                                      description:
+                                          cubit.descriptionController.text,
                                       modelo:
                                           "Modelo: ${cubit.modeloTextController.text}",
                                       // urlPicture: image.path,
